@@ -1,0 +1,61 @@
+.myPadding {
+    padding-left: calc(max(50vw - 620px, 40px));
+    padding-right: calc(max(50vw - 620px, 40px));
+}
+
+// @media only screen and (max-width: 600px) {
+//     .header_large {
+//         visibility: hidden;
+//     }
+// }
+
+.no-box,
+.no-box:focus,
+.no-box:active,
+.no-box:focus:active {
+    box-shadow: none;
+}
+
+.cart-shortcut {
+    width: 228px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+
+    .cart-menu {
+        background-color: rgba(20, 33, 47, 1);
+        width: 228px;
+        height: 0px;
+        border-radius: 0px 0px 5px 5px;
+        position: absolute;
+        margin-left: -10px;
+        top: 199px;
+        overflow: hidden;
+        text-align: center;
+        transition: height 0.2s ease 0.2s;
+        visibility: hidden;
+    }
+}
+
+.cart-shortcut:hover {
+    cursor: pointer;
+    
+    .cart-menu {
+        height: 100px;
+        visibility: visible;
+    }
+}
+
+:host ::ng-deep .custom-scrolltop {
+    background-color: rgb(240, 193, 75);
+
+    &:hover {
+      background-color: rgb(237, 183, 39);
+    }
+
+    &:active, &:focus {
+        box-shadow: 0 0 5px 3px rgba(240, 193, 75, 0.5);
+    }    
+}
+  

@@ -1,0 +1,16 @@
+.blah {
+    color: black;
+    border: 2px solid rgb(240, 193, 75);
+    background-color: rgb(240, 193, 75);
+    font-weight: bold;
+    font-size: small;
+    margin-right: 3px;
+    width: 140px;
+    padding: 9px;
+}
+
+.blah:hover {
+    color: black;
+    border: 2px solid rgb(237, 183, 39);
+    background-color: rgb(237, 183, 39);
+}

@@ -1,0 +1,75 @@
+<div style="margin-bottom: 80px;">
+    <p-steps [model]="items" [activeIndex]="2"></p-steps>
+</div>
+
+<div class="row">
+    <div class="col-6">
+
+        
+        <div style="margin: 30px 0px 40px 0px;">
+            <p style="margin-bottom: 5px; color: rgb(108, 117, 125);">Have a coupon?</p>
+            <div style="display: flex;">
+                <input type="text" pInputText [(ngModel)]="coupon" style="width: 60%;" placeholder="Coupon code">
+                <button pButton pRipple type="button" label="Apply coupon" class="blah" (click)="apply()" style="margin-left: 10px;"></button>
+            </div>
+            <p *ngIf="x" class="p-error" style="font-size: small; visibility: visible;">Invalid coupon</p>
+        </div>
+    
+        <div style="margin: 30px 0px 40px 0px;">
+            <p style="margin-bottom: 5px; color: rgb(108, 117, 125);">Payment method:</p>
+            <div *ngFor="let pm of paymentMethods" class="p-field-checkbox">
+                <p-radioButton [inputId]="pm.key" name="pm" [value]="pm" [(ngModel)]="paymentMethod" style="margin: 5px 10px 5px 0px;"></p-radioButton>
+                <label [for]="pm.key" style="margin: 5px 0px 5px 0px;">{{pm.name}}</label>
+            </div>
+        </div>
+
+        <div style="margin: 30px 0px 40px 0px;">
+            <div style="display: flex; border-bottom: 1px solid #dee2e6; border-top: 1px solid #dee2e6;">
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125); margin-right: 18px;">Subtotal:</p>
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125);">{{subtotal.toLocaleString('en', {useGrouping:true})}} EGP</p>
+            </div>
+            <div style="display: flex; border-bottom: 1px solid #dee2e6;">
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125); margin-right: 15px;">Shipping:</p>
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125);">{{shipping.toLocaleString('en', {useGrouping:true})}} EGP</p>
+            </div>
+            <div style="display: flex; border-bottom: 1px solid #dee2e6;">
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125); margin-right: 15px;">Discount:</p>
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125);">{{discount.toLocaleString('en', {useGrouping:true})}} EGP</p>
+            </div>
+            <div style="display: flex; border-bottom: 1px solid #dee2e6;">
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125); margin-right: 43px;">Total:</p>
+                <p style="margin-bottom: 5px; color: rgb(108, 117, 125);">{{total.toLocaleString('en', {useGrouping:true})}} EGP</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6" style="padding: 0 40px;">
+        <p style="font-size: 24px; font-weight: lighter; text-align: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #dee2e6;">Terms & Conditions</p>
+        
+        <div style="background-color: rgba(227, 242, 253, 0.8); height: 325px; padding: 30px;">
+            <!-- 512 + 20 for error-->
+            <p-scrollPanel [style]="{width: '100%', height: '100%'}">
+                <h6>Errors on our site:</h6>
+                Despite our efforts to ensure that the information on our website is accurate, complete and current, there may be instances when information about a product contains inaccurate or incomplete data, including data about the products price or availability. We make no warranty or guarantee that the information on our website is error-free, complete, or current. We reserve the right to correct errors and/or update the content on our website at any time without notice. We also reserve the right to refuse or cancel any order containing any error or inaccuracy, including after the order has been submitted, whether or not the order has been confirmed and your credit card charged. If your order is canceled after your payment has been processed, we will issue a full refund to the original pay type. We also reserve the right to cancel or reject any order at our discretion. We reserve the right to change product pricing, terms, specifications and warranties without notice. In addition, we may revise these terms of use at any time by updating the website. Online sales are intended for domestic sales or international sales. Prices do not include shipping, tax or insurance. We do not review or edit any portion of gift messages and/or reviews and disclaim all responsibility for their content. If you are purchasing products for export, you are responsible for the necessary export documentation before shipment is made to a foreign country or we can do for you with its necessary costs.
+                <h6 style="margin-top: 20px;">Disclaimers:</h6>
+                <ul>
+                    <li>Prices and availability are subject to change without notice.</li>
+                    <li>For any product price quotation please contact our sales team.</li>
+                    <li>Prices and Shipping Charges are subject to Sales Tax and applicable governmental fees when applicable.</li>
+                    <li>All trademarks and trade names used herein are property of their respective owners.</li>
+                    <li>Although we try to assure accuracy, RAM Electronics Company cannot be responsible for typographic errors on this website.</li>
+                    <li>Upgrade offers and special promotions are subject to change without notice.</li>
+                    <li>Manufacturers warranties in effect at time of purchase apply and depend on manufacturer policy or manufacturers agent.</li>
+                    <li>Manufacturers specifications subject to change without notice.</li>
+                    <li>RAM Electonics Company reserves the right to blacklist any customer and/or refuse any order without reason.</li>
+                </ul>                
+            </p-scrollPanel>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 40px; display: flex; align-items: center; justify-content: space-between;">
+    <button pButton pRipple type="button" label="Back to shipping" class="p-button-text" icon="pi pi-chevron-left" style="color: rgba(35, 48, 62, 0.8); font-weight: bold;" routerLink="/shop/shipping"></button>
+    <button pButton pRipple type="button" label="Place order" class="p-button-text" icon="pi pi-chevron-right" iconPos="right" style="color: rgb(200, 100, 100); font-weight: bold;" routerLink="/shop/confirmation" (click)="next()"></button>
+</div>
+
+<p-toast></p-toast>
